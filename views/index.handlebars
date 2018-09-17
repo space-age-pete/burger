@@ -1,1 +1,61 @@
-<button type="submit" id="myButton">PLuNk</button>
+<div class="container" id="cont">
+    <div class="col" id="not-devoured">
+        <h2>ON PLATE</h2> {{#each this.results}} {{#unless devoured}}
+        <div>
+            {{burger_name}}
+            <button type="submit" class="eat" data-id="{{id}}">eat</button>
+        </div>
+        {{/unless}} {{/each}}
+    </div>
+
+    <div class="col">
+        <form>
+            <input id="nameInput">
+            <button type="submit" id="newBurger">create</button>
+        </form>
+    </div>
+
+    <div class="col" id="devoured">
+        <h2>IN STOMACH</h2> {{#each this.results}} {{#if devoured}}
+        <div>
+            {{burger_name}}
+        </div>
+        {{/if}} {{/each}}
+    </div>
+</div>
+
+
+
+<script>
+    $(".eat").click(function (event) {
+        event.preventDefault();
+
+        $.ajax("/api/burgers/" + $(this).data("id"),
+            {
+                type: "PUT"
+            }
+        ).then(
+            function () {
+                console.log("success");
+                location.reload();
+            }
+        );
+    })
+
+    $("#newBurger").click(function (event) {
+        event.preventDefault();
+
+        $.ajax("/api/burgers",
+            {
+                type: "POST",
+                data: { name: $("#nameInput").val() }
+            }
+        ).then(
+            function () {
+                console.log("success");
+                location.reload();
+            }
+        )
+    })
+
+</script>
