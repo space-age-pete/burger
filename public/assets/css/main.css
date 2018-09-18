@@ -1,7 +1,10 @@
+body {
+    background-image: url("http://s1.1zoom.me/big3/355/353382-sepik.jpg");
+    background-size: cover;
+}
+
 
 #devoured {
-    color: red;
-    background-color: white;
 }
 
 #cont {
@@ -13,7 +16,13 @@
     border: black;
     border-style: solid;
     width: 33%;
-    padding: 5px;
+    padding: 5px 10px;
     height: 250px;
+    background-color: yellow;
+    opacity: 0.95;
+}
+
+h1 {
+    text-align: center;
 }
 

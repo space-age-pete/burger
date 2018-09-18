@@ -1,14 +1,18 @@
 <div class="container" id="cont">
     <div class="col" id="not-devoured">
-        <h2>ON PLATE</h2> {{#each this.results}} {{#unless devoured}}
-        <div>
-            {{burger_name}}
-            <button type="submit" class="eat" data-id="{{id}}">eat</button>
-        </div>
-        {{/unless}} {{/each}}
+        <h1>ON PLATE</h1>
+        <ul>
+            {{#each this.results}} {{#unless devoured}}
+            <li>
+                {{burger_name}}
+                <button type="submit" class="eat" data-id="{{id}}">eat</button>
+            </li>
+            {{/unless}} {{/each}}
+        </ul>
     </div>
 
     <div class="col">
+        <h1>COOK UP A BURGER</h1>
         <form>
             <input id="nameInput">
             <button type="submit" id="newBurger">create</button>
@@ -16,11 +20,14 @@
     </div>
 
     <div class="col" id="devoured">
-        <h2>IN STOMACH</h2> {{#each this.results}} {{#if devoured}}
-        <div>
-            {{burger_name}}
-        </div>
-        {{/if}} {{/each}}
+        <h1>IN STOMACH</h1>
+        <ul>
+            {{#each this.results}} {{#if devoured}}
+            <li>
+                {{burger_name}}
+            </li>
+            {{/if}} {{/each}}
+        </ul>
     </div>
 </div>
 
